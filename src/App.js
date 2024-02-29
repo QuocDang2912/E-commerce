@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+
+import AppBar from './scenes/global/AppBar';
+import Banner from './scenes/global/Banner';
+import Footer from './scenes/global/Footer';
+import Navbar from './scenes/global/Navbar';
+import CopyRight from './scenes/global/CopyRight';
+import { Outlet } from 'react-router-dom';
+
+import { Provider } from 'react-redux';
+import Store from './state/Store';
+import UploadImage from './component/UploadImage';
+
+
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Provider store={Store}>
+
+        <AppBar />
+        <div className='container'>
+          <Banner />
+          <Navbar />
+          {/* vị trí của con */}
+          <Outlet />
+          {/* vị trí của con */}
+          <Footer />
+          <UploadImage />
+        </div>
+        <CopyRight />
+
+      </Provider>
+    </div >
   );
 }
 
